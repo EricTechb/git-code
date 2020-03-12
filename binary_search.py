@@ -1,3 +1,5 @@
+from typing import Any, Optional, Callable, Union, Text
+
 def binary_search(data, needle, key=None):
     left_index = 0
     right_index = len(data)
@@ -6,6 +8,8 @@ def binary_search(data, needle, key=None):
         middle_index = (right_index - left_index) // 2 + left_index
         if key:
             datum = key(data[middle_index])
+        else:
+            datum = data[middle_index]
 
         if datum > needle:
             right_index = middle_index
@@ -21,5 +25,9 @@ def main(needle):
         numbers = list(map(int, file.read().splitlines()))
         numbers.sort()
 
+assert binary_search([4, 8, 15, 23, 42], 15) == 2, "OMG THE WORLD IS ON FIRE"
+
+
 if __name__ == "__main__":
-    print(main(6666666))
+    # print(main(6666666))
+    pass
